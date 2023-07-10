@@ -1,0 +1,41 @@
+<style>
+    * {
+        font-family: sans-serif;
+    }
+</style>
+<body id="content"></body>
+<script>
+
+    function Heading(text) {
+        return `<h1>${text}</h1>`;
+    }
+
+    const content = document.getElementById("content");
+
+    content.innerHTML = HomePage()
+
+    function HomePage() {
+        return Heading("Demo 1") +
+            Heading("Demo 2");
+    }
+
+    const data = [
+        { id: 123, name: "Kevin" },
+        { id: 222, name: "Cynthia" },
+        { id: 333, name: "Nina" }
+    ]
+
+    function onSelected(element){
+        target.innerHTML = element.value
+        // element.closest("#content").querySelector("#target").innerHTML = element.closest("#content").querySelector("select").value;
+    }
+    function selectOptions(data) {
+        return `<select>` +
+            data.map(i => `<option onclick="onSelected(this)" value="${i.id}">${i.name}</option>`).join('<br>') +
+            `</select>`;
+    }
+
+    content.innerHTML += selectOptions(data) +
+        `<div id="target">TBD</div>`
+
+</script>
